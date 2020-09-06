@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDove } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
 export default function Nav() {
@@ -14,7 +16,10 @@ export default function Nav() {
 
   return (
     <nav>
-      <h2 className="py-1 pl-12 text-5xl font-bold">🐦</h2>
+      <FontAwesomeIcon
+        className="text-5xl m-5 ml-8 text-blue-500"
+        icon={faDove}
+      />
       <ul className="justify-between items-center pl-12 p-">
         {navigations.map((n) => (
           <li className="text-xl py-1">
