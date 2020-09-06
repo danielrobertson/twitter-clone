@@ -30,7 +30,7 @@ export default function Nav() {
         className="text-3xl m-5 ml-12 text-blue-500"
         icon={faDove}
       />
-      <ul className="justify-between items-center pl-12 p-">
+      <ul className="justify-between items-center pl-12 p-4">
         {navigations.map((n) => (
           <li key={n.label} className="flex text-xl py-1">
             <div className="w-8">
