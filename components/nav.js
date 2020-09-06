@@ -1,30 +1,46 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDove } from "@fortawesome/free-solid-svg-icons";
+import {
+  faDove,
+  faHome,
+  faHashtag,
+  faBell,
+  faEnvelope,
+  faBookmark,
+  faListAlt,
+  faUser,
+  faEllipsisH,
+} from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
 export default function Nav() {
   const navigations = [
-    { label: "Home", href: "/", icon: "" },
-    { label: "Explore", href: "/", icon: "" },
-    { label: "Notifications", href: "/", icon: "" },
-    { label: "Messages", href: "/", icon: "" },
-    { label: "Bookmarks", href: "/", icon: "" },
-    { label: "Lists", href: "/", icon: "" },
-    { label: "Profile", href: "/", icon: "" },
-    { label: "More", href: "/", icon: "" },
+    { label: "Home", href: "/", icon: faHome },
+    { label: "Explore", href: "/", icon: faHashtag },
+    { label: "Notifications", href: "/", icon: faBell },
+    { label: "Messages", href: "/", icon: faEnvelope },
+    { label: "Bookmarks", href: "/", icon: faBookmark },
+    { label: "Lists", href: "/", icon: faListAlt },
+    { label: "Profile", href: "/", icon: faUser },
+    { label: "More", href: "/", icon: faEllipsisH },
   ];
 
   return (
     <nav>
       <FontAwesomeIcon
-        className="text-5xl m-5 ml-8 text-blue-500"
+        className="text-3xl m-5 ml-12 text-gray-700"
         icon={faDove}
       />
       <ul className="justify-between items-center pl-12 p-">
         {navigations.map((n) => (
-          <li className="text-xl py-1">
+          <li key={n.label} className="flex text-xl py-1">
+            <div className="w-5">
+              <FontAwesomeIcon
+                className="text-gray-700 text-2xl"
+                icon={n.icon}
+              />
+            </div>
             <Link href={n.href}>
-              <a className="font-semibold text-gray-700 no-underline">
+              <a className="pl-4 font-semibold text-gray-700 no-underline">
                 {n.label}
               </a>
             </Link>
