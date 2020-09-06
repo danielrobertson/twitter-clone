@@ -3,23 +3,25 @@ import {
   faDove,
   faHome,
   faHashtag,
-  faBell,
-  faEnvelope,
-  faBookmark,
-  faListAlt,
-  faUser,
+  faList,
   faEllipsisH,
 } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBell,
+  faBookmark,
+  faEnvelope,
+  faUser,
+} from "@fortawesome/free-regular-svg-icons";
 import Link from "next/link";
 
 export default function Nav() {
   const navigations = [
+    { label: "Lists", href: "/", icon: faList },
     { label: "Home", href: "/", icon: faHome },
     { label: "Explore", href: "/", icon: faHashtag },
     { label: "Notifications", href: "/", icon: faBell },
     { label: "Messages", href: "/", icon: faEnvelope },
     { label: "Bookmarks", href: "/", icon: faBookmark },
-    { label: "Lists", href: "/", icon: faListAlt },
     { label: "Profile", href: "/", icon: faUser },
     { label: "More", href: "/", icon: faEllipsisH },
   ];

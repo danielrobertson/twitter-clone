@@ -19,7 +19,7 @@ export default function TweetFeed() {
     <div className="rounded-lg my-3 mx-6 bg-gray-200">
       <h2 className="text-2xl font-bold px-3 py-3">What's happening</h2>
       {happenings.map((t) => (
-        <div key={t.text} className="border p-5">
+        <div key={t.text} className="border-t-2 p-5">
           <div className="text-gray-600">{t.topic}</div>
           <div className="font-semibold w-64">{t.text}</div>
           <div className="text-gray-600">{t.statistics}</div>
