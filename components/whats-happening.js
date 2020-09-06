@@ -16,7 +16,7 @@ export default function TweetFeed() {
   ]);
 
   return (
-    <div className="border rounded-lg my-3 mx-6">
+    <div className="rounded-lg my-3 mx-6 bg-gray-200">
       <h2 className="text-2xl font-bold px-3 py-3">What's happening</h2>
       {happenings.map((t) => (
         <div key={t.text} className="border p-5">

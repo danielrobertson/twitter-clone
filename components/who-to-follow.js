@@ -16,7 +16,7 @@ export default function WhoToFollow() {
   ]);
 
   return (
-    <div className="border rounded-lg my-3 mx-6">
+    <div className="rounded-lg my-3 mx-6 bg-gray-200">
       <h2 className="text-2xl font-bold px-3 py-3">Who to follow</h2>
       {whoToFollowList.map((t) => (
         <div key={t.name} className="border p-5">
