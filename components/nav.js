@@ -24,7 +24,7 @@ export default function Nav() {
         {navigations.map((n) => (
           <li className="text-xl py-1">
             <Link href={n.href}>
-              <a className="font-semibold text-blue-500 no-underline">
+              <a className="font-semibold text-gray-700 no-underline">
                 {n.label}
               </a>
             </Link>
