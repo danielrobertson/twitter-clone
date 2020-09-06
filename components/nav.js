@@ -16,8 +16,8 @@ import Link from "next/link";
 
 export default function Nav() {
   const navigations = [
-    { label: "Lists", href: "/", icon: faList },
     { label: "Home", href: "/", icon: faHome },
+    { label: "Lists", href: "/", icon: faList },
     { label: "Explore", href: "/", icon: faHashtag },
     { label: "Notifications", href: "/", icon: faBell },
     { label: "Messages", href: "/", icon: faEnvelope },

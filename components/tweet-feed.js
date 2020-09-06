@@ -11,7 +11,7 @@ export default function TweetFeed({ tweets }) {
   return (
     <div>
       {tweets.map((t, idx) => (
-        <div key={idx} className="flex border p-5">
+        <div key={idx} className="flex border p-4">
           <div className="pr-2">
             <img
               className="rounded-full"
@@ -26,10 +26,29 @@ export default function TweetFeed({ tweets }) {
               <div className="p-1 text-gray-600">· {t.timestamp}</div>
             </div>
             <div className="p-1">{t.text}</div>
-            <div className="flex pt-3">
-              {[faComment, faRetweet, faHeart, faShareSquare].map((i, idx) => (
-                <div key={idx} className="pr-16">
-                  <FontAwesomeIcon className="w-2 text-gray-800" icon={i} />
+            <div className="flex pt-2">
+              {[
+                {
+                  icon: faComment,
+                  count: t.commentCount,
+                },
+                {
+                  icon: faRetweet,
+                  count: t.retweetCount,
+                },
+                {
+                  icon: faHeart,
+                  count: t.likeCount,
+                },
+                {
+                  icon: faShareSquare,
+                },
+              ].map((tweetData, idx) => (
+                <div key={idx} className="pr-12 text-gray-700">
+                  <FontAwesomeIcon className="w-2" icon={tweetData.icon} />
+                  <span className="pl-3">
+                    {tweetData.count && tweetData.count}
+                  </span>
                 </div>
               ))}
             </div>

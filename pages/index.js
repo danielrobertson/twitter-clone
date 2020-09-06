@@ -4,7 +4,7 @@ import TweetFeed from "../components/tweet-feed";
 import WhatsHappening from "../components/whats-happening";
 import WhoToFollow from "../components/who-to-follow";
 
-export default function IndexPage({ tweets }) {
+export default function IndexPage({ tweets, user }) {
   return (
     <div className="container mx-auto flex flex-row h-screen">
       <div className="flex-grow-0">
@@ -12,10 +12,16 @@ export default function IndexPage({ tweets }) {
       </div>
       <div className="flex-grow border">
         <h2 className="text-2xl font-bold p-3">Home</h2>
-        <CreateTweet />
+        <CreateTweet user={user} />
         <TweetFeed tweets={tweets} />
       </div>
       <div className="flex-grow-0">
+        <form className="mx-6 my-4">
+          <input
+            className="rounded-full placeholder-gray-600 w-full bg-gray-300 px-4 py-2"
+            placeholder="Search twitter"
+          />
+        </form>
         <WhatsHappening />
         <WhoToFollow />
       </div>
@@ -24,9 +30,9 @@ export default function IndexPage({ tweets }) {
 }
 
 export async function getStaticProps() {
-  const response = await fetch("https://randomuser.me/api/?results=3");
+  const response = await fetch("https://randomuser.me/api/?results=4");
   const users = await response.json();
-
+  const user = users.results[3];
   const tweets = [
     {
       user: {
@@ -36,6 +42,9 @@ export async function getStaticProps() {
       },
       text: "They threw the ball! 🏈 #sports ",
       timestamp: "Just now",
+      commentCount: 3,
+      retweetCount: 1,
+      likeCount: 8,
     },
     {
       user: {
@@ -45,6 +54,9 @@ export async function getStaticProps() {
       },
       text: "What year is it",
       timestamp: "20m",
+      commentCount: 30,
+      retweetCount: 5,
+      likeCount: 2020,
     },
     {
       user: {
@@ -54,9 +66,12 @@ export async function getStaticProps() {
       },
       text: "Tweety mctweetface",
       timestamp: "1h",
+      commentCount: 9,
+      retweetCount: 80,
+      likeCount: 420,
     },
   ];
   return {
-    props: { tweets },
+    props: { tweets, user },
   };
 }
