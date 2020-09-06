@@ -11,7 +11,7 @@ export default function IndexPage() {
         <Nav />
       </div>
       <div className="flex-grow border">
-        <h2 className="text-2xl font-bold p-2">Home</h2>
+        <h2 className="text-2xl font-bold p-3">Home</h2>
         <CreateTweet />
         <TweetFeed />
       </div>
