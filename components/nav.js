@@ -30,9 +30,9 @@ export default function Nav() {
         className="text-3xl m-5 ml-12 text-blue-500"
         icon={faDove}
       />
-      <ul className="justify-between items-center pl-12 p-4">
+      <ul className="justify-between items-center pl-12">
         {navigations.map((n) => (
-          <li key={n.label} className="flex text-xl py-1">
+          <li key={n.label} className="flex text-xl py-4">
             <div className="w-8">
               <FontAwesomeIcon
                 className="text-gray-800 text-2xl"
@@ -49,7 +49,7 @@ export default function Nav() {
       </ul>
       <div className="my-5 pl-10 pr-8">
         <button
-          className="w-48 bg-blue-500 hover:bg-blue-800 duration-300 font-semibold text-white shadow py-3 rounded-full"
+          className="w-56 bg-blue-500 hover:bg-blue-800 duration-300 font-semibold text-white shadow py-3 rounded-full"
           type="submit"
         >
           Tweet
