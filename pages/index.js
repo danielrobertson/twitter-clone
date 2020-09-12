@@ -39,9 +39,9 @@ export async function getStaticProps() {
     cache: new InMemoryCache(),
   });
 
-  const response = await apolloClient.query({
+  const tweetsQueryResponse = await apolloClient.query({
     query: gql`
-      query MyQuery {
+      query {
         tweets {
           text
           retweet_count
@@ -56,14 +56,22 @@ export async function getStaticProps() {
       }
     `,
   });
-  const tweets = response.data.tweets;
-  console.log(tweets);
+  const tweets = tweetsQueryResponse.data.tweets;
 
-  const mockSignedInUser = {
-    first_name: "Daniel",
-    username: `@dan`,
-    image_url: "https://randomuser.me/api/portraits/thumb/men/84.jpg",
-  };
+  // todo integrate Auth0 to handle signed in user
+  const mockSignedInUserResponse = await apolloClient.query({
+    query: gql`
+      query {
+        users(where: { username: { _eq: "@dan" } }) {
+          id
+          first_name
+          image_url
+          username
+        }
+      }
+    `,
+  });
+  const mockSignedInUser = mockSignedInUserResponse.data.users[0];
 
   return {
     props: { tweets, user: mockSignedInUser },

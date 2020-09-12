@@ -10,8 +10,12 @@ import {
 export default function CreateTweet({ user }) {
   const [tweet, setTweet] = useState("");
   const submitTweet = async (e) => {
-    console.log(tweet);
     e.preventDefault();
+    const submittedTweet = {
+      text: tweet,
+      user_id: user.id,
+    };
+    console.log(submittedTweet);
   };
 
   return (
