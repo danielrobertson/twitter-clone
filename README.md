@@ -2,7 +2,7 @@
 
 Twitter clone built using Next.js, Tailwind CSS, and Hasura GraphQL layer backed by Postgres DB.
 
-[Try it live](tweet-bice.vercel.app) 🎉
+[Try it live](https://tweet-bice.vercel.app/) 🎉
 
 ## Development
 
