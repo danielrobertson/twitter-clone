@@ -6,6 +6,8 @@ import {
   faSmile,
   faCalendar,
 } from "@fortawesome/free-regular-svg-icons";
+const { gql } = require("@apollo/client");
+const { ApolloClient, InMemoryCache } = require("@apollo/client");
 
 export default function CreateTweet({ user }) {
   const [tweet, setTweet] = useState("");
@@ -15,7 +17,30 @@ export default function CreateTweet({ user }) {
       text: tweet,
       user_id: user.id,
     };
+    const user_id = user.id;
     console.log(submittedTweet);
+
+    // todo use useMutation hook and consolidate Hasura network connections
+    const apolloClient = new ApolloClient({
+      uri: "https://selected-spaniel-87.hasura.app/v1/graphql",
+      cache: new InMemoryCache(),
+    });
+
+    const submitTweetResponse = await apolloClient.mutate({
+      mutation: gql`
+        mutation($text: String!, $user_id: Int!) {
+          insert_tweets_one(object: { text: $text, user_id: $user_id }) {
+            id
+          }
+        }
+      `,
+      variables: {
+        text: tweet,
+        user_id: user_id,
+      },
+    });
+
+    setTweet("");
   };
 
   return (

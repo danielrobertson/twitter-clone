@@ -16,4 +16,7 @@ yarn dev
 - ~Host app on Vercel~
 - Post new tweets to Hasura GraphQL mutation
 - Add GraphQL subscription to new tweets
+- Handle comment/retweet/like icon clicks
+- GraphQL subscriptions on comment/retweet/like counts
 - Integrate Auth0 to handle user auth
+- Search functionality
