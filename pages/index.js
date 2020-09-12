@@ -56,8 +56,8 @@ export async function getStaticProps() {
       }
     `,
   });
-  console.log(response);
   const tweets = response.data.tweets;
+  console.log(tweets);
 
   const mockSignedInUser = {
     first_name: "Daniel",

@@ -30,15 +30,15 @@ export default function TweetFeed({ tweets }) {
               {[
                 {
                   icon: faComment,
-                  count: t.commentCount,
+                  count: t.comment_count,
                 },
                 {
                   icon: faRetweet,
-                  count: t.retweetCount,
+                  count: t.retweet_count,
                 },
                 {
                   icon: faHeart,
-                  count: t.likeCount,
+                  count: t.like_count,
                 },
                 {
                   icon: faShareSquare,
