@@ -14,6 +14,9 @@ export default function CreateTweet({ user }) {
   const submitTweet = async (e) => {
     e.preventDefault();
 
+    // todo disable Submit button until there is content
+    if (tweet == "") return;
+
     // todo use useMutation hook and consolidate graphql operations
     const submitTweetResponse = await apolloClient.mutate({
       mutation: gql`
