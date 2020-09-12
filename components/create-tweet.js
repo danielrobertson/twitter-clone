@@ -6,32 +6,29 @@ import {
   faSmile,
   faCalendar,
 } from "@fortawesome/free-regular-svg-icons";
-const { gql } = require("@apollo/client");
-import { apolloClient } from "../graphql/apollo";
+import { gql, useMutation } from "@apollo/client";
+
+const CREATE_TWEET = gql`
+  mutation($text: String!, $user_id: Int!) {
+    insert_tweets_one(object: { text: $text, user_id: $user_id }) {
+      id
+    }
+  }
+`;
 
 export default function CreateTweet({ user }) {
   const [tweet, setTweet] = useState("");
+  const [createTweet, { data }] = useMutation(CREATE_TWEET);
+
   const submitTweet = async (e) => {
     e.preventDefault();
 
     // todo disable Submit button until there is content
-    if (tweet == "") return;
+    if (tweet == "") {
+      return;
+    }
 
-    // todo use useMutation hook and consolidate graphql operations
-    const submitTweetResponse = await apolloClient.mutate({
-      mutation: gql`
-        mutation($text: String!, $user_id: Int!) {
-          insert_tweets_one(object: { text: $text, user_id: $user_id }) {
-            id
-          }
-        }
-      `,
-      variables: {
-        text: tweet,
-        user_id: user.id,
-      },
-    });
-
+    createTweet({ variables: { text: tweet, user_id: user.id } });
     setTweet("");
   };
 
