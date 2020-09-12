@@ -63,7 +63,7 @@ export async function getStaticProps() {
   const mockSignedInUserResponse = await apolloClient.query({
     query: gql`
       query {
-        users(where: { username: { _eq: "@dan" } }) {
+        users(where: { username: { _eq: "@fab" } }) {
           id
           first_name
           image_url

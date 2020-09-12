@@ -13,12 +13,6 @@ export default function CreateTweet({ user }) {
   const [tweet, setTweet] = useState("");
   const submitTweet = async (e) => {
     e.preventDefault();
-    const submittedTweet = {
-      text: tweet,
-      user_id: user.id,
-    };
-    const user_id = user.id;
-    console.log(submittedTweet);
 
     // todo use useMutation hook and consolidate Hasura network connections
     const apolloClient = new ApolloClient({
@@ -36,7 +30,7 @@ export default function CreateTweet({ user }) {
       `,
       variables: {
         text: tweet,
-        user_id: user_id,
+        user_id: user.id,
       },
     });
 
