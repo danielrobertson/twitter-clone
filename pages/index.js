@@ -42,7 +42,7 @@ export async function getStaticProps() {
   const tweetsQueryResponse = await apolloClient.query({
     query: gql`
       query {
-        tweets {
+        tweets(order_by: { created_at: desc }) {
           text
           retweet_count
           like_count
