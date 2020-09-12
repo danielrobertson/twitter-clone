@@ -5,7 +5,7 @@ import WhatsHappening from "../components/whats-happening";
 import WhoToFollow from "../components/who-to-follow";
 
 const { gql } = require("@apollo/client");
-const { ApolloClient, InMemoryCache } = require("@apollo/client");
+import { apolloClient } from "../graphql/apollo";
 
 export default function IndexPage({ tweets, user }) {
   return (
@@ -33,12 +33,6 @@ export default function IndexPage({ tweets, user }) {
 }
 
 export async function getStaticProps() {
-  const apolloClient = new ApolloClient({
-    // todo env var this
-    uri: "https://selected-spaniel-87.hasura.app/v1/graphql",
-    cache: new InMemoryCache(),
-  });
-
   const tweetsQueryResponse = await apolloClient.query({
     query: gql`
       query {
