@@ -17,11 +17,7 @@ export default function CreateTweet({ user }) {
   return (
     <form className="flex border p-2">
       <div className="pl-1 pt-1 pr-4">
-        <img
-          className="rounded-full"
-          src={user.picture.thumbnail}
-          alt="picture"
-        ></img>
+        <img className="rounded-full" src={user.image_url} alt="picture"></img>
       </div>
       <div className="flex-grow">
         <textarea

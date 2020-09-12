@@ -4,6 +4,9 @@ import TweetFeed from "../components/tweet-feed";
 import WhatsHappening from "../components/whats-happening";
 import WhoToFollow from "../components/who-to-follow";
 
+const { gql } = require("@apollo/client");
+const { ApolloClient, InMemoryCache } = require("@apollo/client");
+
 export default function IndexPage({ tweets, user }) {
   return (
     <div className="container mx-auto flex flex-row h-screen">
@@ -30,48 +33,39 @@ export default function IndexPage({ tweets, user }) {
 }
 
 export async function getStaticProps() {
-  const response = await fetch("https://randomuser.me/api/?results=4");
-  const users = await response.json();
-  const user = users.results[3];
-  const tweets = [
-    {
-      user: {
-        name: users.results[0].name.first,
-        username: `@${users.results[0].name.first}`,
-        avatar: users.results[0].picture.thumbnail,
-      },
-      text: "They threw the ball! 🏈 #sports ",
-      timestamp: "Just now",
-      commentCount: 3,
-      retweetCount: 1,
-      likeCount: 8,
-    },
-    {
-      user: {
-        name: users.results[1].name.first,
-        username: `@${users.results[1].name.first}`,
-        avatar: users.results[1].picture.thumbnail,
-      },
-      text: "What year is it",
-      timestamp: "20m",
-      commentCount: 30,
-      retweetCount: 5,
-      likeCount: 2020,
-    },
-    {
-      user: {
-        name: users.results[2].name.first,
-        username: `@${users.results[2].name.first}`,
-        avatar: users.results[2].picture.thumbnail,
-      },
-      text: "Tweety mctweetface",
-      timestamp: "1h",
-      commentCount: 9,
-      retweetCount: 80,
-      likeCount: 420,
-    },
-  ];
+  const apolloClient = new ApolloClient({
+    // todo env var this
+    uri: "https://selected-spaniel-87.hasura.app/v1/graphql",
+    cache: new InMemoryCache(),
+  });
+
+  const response = await apolloClient.query({
+    query: gql`
+      query MyQuery {
+        tweets {
+          text
+          retweet_count
+          like_count
+          comment_count
+          user {
+            first_name
+            image_url
+            username
+          }
+        }
+      }
+    `,
+  });
+  console.log(response);
+  const tweets = response.data.tweets;
+
+  const mockSignedInUser = {
+    first_name: "Daniel",
+    username: `@dan`,
+    image_url: "https://randomuser.me/api/portraits/thumb/men/84.jpg",
+  };
+
   return {
-    props: { tweets, user },
+    props: { tweets, user: mockSignedInUser },
   };
 }

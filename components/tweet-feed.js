@@ -15,15 +15,15 @@ export default function TweetFeed({ tweets }) {
           <div className="pr-2">
             <img
               className="rounded-full"
-              src={t.user.avatar}
+              src={t.user.image_url}
               alt="picture"
             ></img>
           </div>
           <div className="flex flex-col">
             <div className="flex">
-              <div className="p-1 font-semibold ">{t.user.name}</div>
+              <div className="p-1 font-semibold ">{t.user.first_name}</div>
               <div className="p-1 text-gray-600">{t.user.username}</div>
-              <div className="p-1 text-gray-600">· {t.timestamp}</div>
+              <div className="p-1 text-gray-600">· {t.created_at}</div>
             </div>
             <div className="p-1">{t.text}</div>
             <div className="flex pt-2">
