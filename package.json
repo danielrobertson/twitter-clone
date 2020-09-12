@@ -13,6 +13,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
     "graphql": "^15.3.0",
+    "javascript-time-ago": "^2.0.13",
     "next": "latest",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"

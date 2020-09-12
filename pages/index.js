@@ -47,6 +47,7 @@ export async function getStaticProps() {
           retweet_count
           like_count
           comment_count
+          created_at
           user {
             first_name
             image_url

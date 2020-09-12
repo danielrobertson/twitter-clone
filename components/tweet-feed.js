@@ -6,8 +6,12 @@ import {
   faShareSquare,
 } from "@fortawesome/free-regular-svg-icons";
 import { faRetweet } from "@fortawesome/free-solid-svg-icons";
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en";
 
 export default function TweetFeed({ tweets }) {
+  TimeAgo.addLocale(en);
+  const timeAgo = new TimeAgo("en-US");
   return (
     <div>
       {tweets.map((t, idx) => (
@@ -23,7 +27,9 @@ export default function TweetFeed({ tweets }) {
             <div className="flex">
               <div className="p-1 font-semibold ">{t.user.first_name}</div>
               <div className="p-1 text-gray-600">{t.user.username}</div>
-              <div className="p-1 text-gray-600">· {t.created_at}</div>
+              <div className="p-1 text-gray-600">
+                · {timeAgo.format(new Date(t.created_at), "twitter")}
+              </div>
             </div>
             <div className="p-1">{t.text}</div>
             <div className="flex pt-2">
