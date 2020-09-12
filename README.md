@@ -1,6 +1,6 @@
 # Twitter clone
 
-This Twitter clone built using Next.js and [Tailwind CSS](https://tailwindcss.com)
+This Twitter clone built using Next.js, Tailwind CSS, and Hasura GraphQL layer backed by Postgres DB  
 
 ## Development
 
