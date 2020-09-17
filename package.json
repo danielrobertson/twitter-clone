@@ -19,7 +19,8 @@
     "next": "latest",
     "next-with-apollo": "^5.1.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "subscriptions-transport-ws": "^0.9.18"
   },
   "devDependencies": {
     "postcss-flexbugs-fixes": "4.2.1",

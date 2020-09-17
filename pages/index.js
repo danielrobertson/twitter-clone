@@ -1,8 +1,6 @@
 const { gql } = require("@apollo/client");
-import { useQuery } from "@apollo/react-hooks";
-
+import { useQuery, useSubscription } from "@apollo/react-hooks";
 import withApollo from "../graphql/withApollo";
-// import { apolloClient } from "../graphql/apollo";
 import Nav from "../components/nav";
 import CreateTweet from "../components/create-tweet";
 import TweetFeed from "../components/tweet-feed";
@@ -44,6 +42,17 @@ function IndexPage() {
     FETCH_MOCK_SIGNED_IN_USER_QUERY
   );
 
+  // const { loading, error, data } = useSubscription(
+  //   gql`
+  //     subscription {
+  //       tweets {
+  //         text
+  //       }
+  //     }
+  //   `
+  // );
+  // console.log("subscription ", data);
+
   return (
     <div className="container mx-auto flex flex-row h-screen">
       <div className="flex-grow-0">
@@ -72,44 +81,3 @@ function IndexPage() {
 }
 
 export default withApollo(IndexPage);
-
-// export async function getStaticProps() {
-//   const tweetsQueryResponse = await apolloClient.query({
-//     query: gql`
-//       query {
-//         tweets(order_by: { created_at: desc }) {
-//           text
-//           retweet_count
-//           like_count
-//           comment_count
-//           created_at
-//           user {
-//             first_name
-//             image_url
-//             username
-//           }
-//         }
-//       }
-//     `,
-//   });
-//   const tweets = tweetsQueryResponse.data.tweets;
-
-//   // todo integrate Auth0 to handle signed in user
-// const mockSignedInUserResponse = await apolloClient.query({
-//   query: gql`
-//     query {
-//       users(where: { username: { _eq: "@fab" } }) {
-//         id
-//         first_name
-//         image_url
-//         username
-//       }
-//     }
-//   `,
-// });
-//   const mockSignedInUser = mockSignedInUserResponse.data.users[0];
-
-//   return {
-//     props: { tweets, user: mockSignedInUser },
-//   };
-// }
