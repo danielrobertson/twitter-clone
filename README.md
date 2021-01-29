@@ -4,6 +4,7 @@ Work in progress Twitter clone built using Next.js, Tailwind CSS, and Hasura Gra
 
 [Try the work in progress live](https://tweet-bice.vercel.app/) 🎉
 
+
 ## Development
 
 ```
@@ -22,3 +23,5 @@ yarn dev
 - GraphQL subscriptions on comment/retweet/like counts
 - Integrate Auth0 to handle user auth
 - Search functionality
+
+
